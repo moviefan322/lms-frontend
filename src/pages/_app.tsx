@@ -3,7 +3,8 @@ import "@/styles/bootstrap.scss";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
-import StoreProvider from '../components/StoreProvider';
+import { Provider } from "react-redux";
+import { store } from "../lib/store";
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -11,8 +12,8 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <StoreProvider>
+    <Provider store={store}>
       <Component {...pageProps} />
-    </StoreProvider>
+    </Provider>
   );
 }

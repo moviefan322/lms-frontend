@@ -2,10 +2,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "@/lib/store";
 
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL
-  ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users`
+  ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user`
   : (() => {
       console.error("NEXT_PUBLIC_BACKEND_URL is not defined");
-      return "http://localhost:8000/api/users";
+      return "http://localhost:8000/api/user";
     })();
 
 export const authApi = createApi({

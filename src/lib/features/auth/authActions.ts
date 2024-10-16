@@ -51,7 +51,7 @@ export const getUserDetails = createAsyncThunk<
   };
 
   try {
-    const response = await axios.get(`${backendUrl}/api/users/me`, config);
+    const response = await axios.get(`${backendUrl}/api/user/me`, config);
 
     const { data } = response;
     return data as UserDetailsRes;

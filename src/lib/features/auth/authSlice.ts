@@ -30,7 +30,6 @@ const authSlice = createSlice({
       state.token = null;
       state.error = null;
       state.isLoggedIn = false;
-      localStorage.removeItem("token");
     },
   },
   extraReducers: (builder) => {
@@ -47,15 +46,14 @@ const authSlice = createSlice({
         state.error = payload?.non_field_errors?.[0] || "Login failed";
         state.success = false;
       })
-      // Handle user details fetching
       .addCase(getUserDetails.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(getUserDetails.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.email = payload.email; // Save email from the response
-        state.name = payload.name; // Save name from the response
+        state.email = payload.email;
+        state.name = payload.name;
       })
       .addCase(getUserDetails.rejected, (state, { payload }) => {
         state.loading = false;
